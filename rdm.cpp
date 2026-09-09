@@ -89,7 +89,9 @@ RDMInteger RDMInteger::operator*(const RDMInteger &n) {
     RDMInteger result("0");
 
     int shift = 0;
-    for(char digit : n.digits) {
+    for(int j = n.size()-1; j >= 0; j--) {
+        char digit = n.digits[j];
+        
         RDMInteger partial =  multiply_by_digit(*this, digit - '0');
 
         for(int i = 0; i < shift; i++) {
